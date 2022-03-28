@@ -5,8 +5,10 @@ import ReportingDAO from '../../api/reporting-dao';
 
 const Reporting = (() => {
 
-  const categoriesRoot = document.querySelector('#reporting-categories');
-  const articlesRoot = document.querySelector('#reporting-articles');
+  const section = document.querySelector('#reporting');
+
+  const categoriesRoot = section.querySelector('.reporting-categories');
+  const articlesRoot = section.querySelector('.reporting-articles');
 
   const category = categoriesRoot.firstElementChild.cloneNode(true);
   const article = articlesRoot.firstElementChild.cloneNode(true);
@@ -33,6 +35,7 @@ const Reporting = (() => {
         },
       };
     }
+
     ReportingDAO.getAll(options).then((res) => {
       // removing active flag
       categories.forEach((item) => {
@@ -57,11 +60,12 @@ const Reporting = (() => {
   }
 
   const categories = categoriesEnum.map(appendCategory);
+  // by default 'All' category is selected - no filters applied
   categories[0].firstElementChild.classList.add('active');
 
 
   const displayArticles = (res) => {
-    // remove articles
+    // remove prev. articles
     articlesRoot.innerHTML = '';
 
     res.data.forEach((report) => {
@@ -86,7 +90,6 @@ const Reporting = (() => {
 
       articlesRoot.append(articleEl);
     });
-
   };
 
   // TODO: add pagination
