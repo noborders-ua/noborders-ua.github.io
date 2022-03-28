@@ -514,51 +514,27 @@
 
 
       <!-- Reporting -->
-      <section class="container my-5 pt-5 pb-lg-5">
+      <section id="reporting" class="container my-5 pt-5 pb-lg-5">
         <h2 class="h1 mb-4 pt-lg-2 pb-lg-3 py-1 text-center">Звітність</h2>
 
         <!-- Category tabs -->
-        <ul class="nav nav-tabs justify-content-center mb-lg-5 mb-4 pb-lg-2">
-          <li class="nav-item">
-            <a href="#" class="nav-link active">All Topics</a>
-          </li>
-          <li class="nav-item">
-            <a href="#" class="nav-link">Digital</a>
-          </li>
-          <li class="nav-item">
-            <a href="#" class="nav-link">Marketing</a>
-          </li>
-          <li class="nav-item">
-            <a href="#" class="nav-link">Success Stories</a>
-          </li>
-          <li class="nav-item">
-            <a href="#" class="nav-link">Startups</a>
-          </li>
-          <li class="nav-item">
-            <a href="#" class="nav-link">Events</a>
-          </li>
-          <li class="nav-item">
-            <a href="#" class="nav-link">Technology</a>
-          </li>
-          <li class="nav-item">
-            <a href="#" class="nav-link">Business</a>
-          </li>
-          <li class="nav-item">
-            <a href="#" class="nav-link">Processes &amp; Tools</a>
+        <ul id="reporting-categories" class="nav nav-tabs justify-content-center mb-lg-5 mb-4 pb-lg-2">
+          <li class="nav-item" style="display: none;">
+            <a href="javascript:;" class="nav-link active">All Topics</a>
           </li>
         </ul>
 
         <!-- Blog articles -->
-        <div class="pb-3">
+        <div id="reporting-articles" class="pb-3">
 
           <!-- Blog item -->
           <article class="card border-0 shadow-sm overflow-hidden mb-4">
             <div class="row g-0">
-              <div class="col-sm-4 position-relative bg-repeat-0 bg-size-cover" style="background-image: url(assets/img/blog/01.jpg); min-height: 15rem;">
+              <div class="article-bg col-sm-4 position-relative bg-repeat-0 bg-size-cover" style="background-image: url(assets/img/blog/01.jpg); min-height: 15rem;">
                 <a href="blog-single.html" class="position-absolute top-0 start-0 w-100 h-100" aria-label="Read more"></a>
-                <a href="#" class="btn btn-icon btn-light bg-white border-white btn-sm rounded-circle position-absolute top-0 end-0 zindex-5 me-3 mt-3" data-bs-toggle="tooltip" data-bs-placement="left" title="Read later">
-                  <i class="bx bx-bookmark"></i>
-                </a>
+<!--                <a href="#" class="btn btn-icon btn-light bg-white border-white btn-sm rounded-circle position-absolute top-0 end-0 zindex-5 me-3 mt-3" data-bs-toggle="tooltip" data-bs-placement="left" title="Read later">-->
+<!--                  <i class="bx bx-bookmark"></i>-->
+<!--                </a>-->
               </div>
               <div class="col-sm-8">
                 <div class="card-body">
@@ -567,9 +543,9 @@
                     <span class="fs-sm text-muted border-start ps-3 ms-3">Sep 3, 2021</span>
                   </div>
                   <h3 class="h4">
-                    <a href="blog-single.html">5 Bad Landing Page Examples &amp; How We Would Fix Them</a>
+                    <a href="blog-single.html" class="article-title">5 Bad Landing Page Examples &amp; How We Would Fix Them</a>
                   </h3>
-                  <p>Tellus sagittis dolor pellentesque vel porttitor magna aliquet arcu. Interdum risus mauris pulvinar et vel. Morbi tellus, scelerisque vel metus. Scelerisque arcu egestas ac commodo, ac nibh. Pretium ac elit sed nulla nec.</p>
+                  <p class="article-text">Tellus sagittis dolor pellentesque vel porttitor magna aliquet arcu. Interdum risus mauris pulvinar et vel. Morbi tellus, scelerisque vel metus. Scelerisque arcu egestas ac commodo, ac nibh. Pretium ac elit sed nulla nec.</p>
                   <hr class="my-4">
                   <div class="d-flex align-items-center justify-content-between">
                     <a href="#" class="d-flex align-items-center fw-bold text-dark text-decoration-none me-3">
@@ -1054,8 +1030,12 @@
     <script src="assets/vendor/@lottiefiles/lottie-player/dist/lottie-player.js"></script>
     <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
     <script src="assets/vendor/cleave.js/dist/cleave.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
 
     <!-- Main Theme Script -->
     <script src="assets/js/theme.min.js"></script>
+
+    <!-- Main JS Script -->
+    <script src="assets/js/index.min.js"></script>
   </body>
 </html>
