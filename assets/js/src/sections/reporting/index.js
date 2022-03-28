@@ -40,7 +40,7 @@ const Reporting = (() => {
       // removing active flag
       categories.forEach((item) => {
         item.firstElementChild.classList.remove('active');
-      })
+      });
       // setting active flag to the current category
       categories[index].firstElementChild.classList.add('active');
 
@@ -57,7 +57,7 @@ const Reporting = (() => {
     element.addEventListener('click', handleCategoryClick(index));
     categoriesRoot.append(element);
     return element;
-  }
+  };
 
   const categories = categoriesEnum.map(appendCategory);
   // by default 'All' category is selected - no filters applied
@@ -87,6 +87,14 @@ const Reporting = (() => {
       const textEl = articleEl.querySelector('.article-text');
       // textEl.innerHTML = marked.parse(report.attributes.text.slice(0, 600).concat('...'));
       textEl.innerHTML = marked.parse(report.attributes.previewText);
+
+      // setting preview text
+      const dateEl = articleEl.querySelector('.article-date');
+      dateEl.innerText = new Date(report.attributes.createdAt).toLocaleString('uk-UA', {
+        day: 'numeric',
+        month: 'numeric',
+        year: 'numeric',
+      });
 
       articlesRoot.append(articleEl);
     });
