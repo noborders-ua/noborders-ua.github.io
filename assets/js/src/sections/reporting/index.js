@@ -1,3 +1,5 @@
+// noinspection JSVoidFunctionReturnValueUsed
+
 /**
  * Reporting section
  */
@@ -45,7 +47,7 @@ const Reporting = (() => {
       categories[index].firstElementChild.classList.add('active');
 
       // displaying data
-      displayArticles(res);
+      displayArticles(res, categoriesEnum[index]);
     });
   };
 
@@ -63,17 +65,22 @@ const Reporting = (() => {
   // by default 'All' category is selected - no filters applied
   categories[0].firstElementChild.classList.add('active');
 
-
-  const displayArticles = (res) => {
+  const displayArticles = (res, category) => {
     // remove prev. articles
     articlesRoot.innerHTML = '';
+
+    // hide the section if no data at all
+    if (!category && res.data && !res.data.length) {
+      section.classList.add('d-none');
+      return;
+    }
 
     res.data.forEach((report) => {
       const articleEl = article.cloneNode(true);
 
       // setting preview image
       const bgEl = articleEl.querySelector('.article-bg');
-      bgEl.style['background-image'] = `url(${window.API_URL}${report.attributes.preview.data.attributes.url})`;
+      bgEl.style['background-image'] = `url(${ window.API_URL }${ report.attributes.preview.data.attributes.url })`;
 
       // setting category
       const badgeEl = articleEl.querySelector('.badge');
