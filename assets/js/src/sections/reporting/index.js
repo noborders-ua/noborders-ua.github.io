@@ -18,15 +18,9 @@ const Reporting = (() => {
   /** rendering categories */
   category.style.display = 'inherit';
   category.firstElementChild.classList.remove('active');
-  // remove default categories
-  categoriesRoot.innerHTML = '';
 
-  const categoriesEnum = [
-    'Всі',
-    'ЗСУ',
-    'Допомога біженцям',
-    'Притулки для тварин/зоопарки',
-  ];
+  // TODO: add translation
+  let categoriesEnum = ['ВСІ'];
 
   const handleCategoryClick = (index) => () => {
     const options = {};
@@ -61,9 +55,15 @@ const Reporting = (() => {
     return element;
   };
 
-  const categories = categoriesEnum.map(appendCategory);
-  // by default 'All' category is selected - no filters applied
-  categories[0].firstElementChild.classList.add('active');
+  const generateCategories = (res) => {
+    const categoriesSet = new Set();
+    res.data.forEach((report) => categoriesSet.add(report.attributes.category));
+    categoriesSet.forEach((item) => categoriesEnum.push(item.toUpperCase()));
+
+    const categories = categoriesEnum.map(appendCategory);
+    // by default 'All' category is selected - no filters applied
+    categories[0].firstElementChild.classList.add('active');
+  };
 
   const displayArticles = (res, category) => {
     // remove prev. articles
@@ -110,7 +110,7 @@ const Reporting = (() => {
   // TODO: add pagination
   /** fetching all reportings from API */
   ReportingDAO.getAll().then((res) => {
-    // displaying data
+    generateCategories(res);
     displayArticles(res);
   });
 
